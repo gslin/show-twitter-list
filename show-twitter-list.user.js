@@ -6,7 +6,7 @@
 // @author       Gea-Suan Lin <darkkiller@gmail.com>
 // @match        https://twitter.com/*
 // @grant        none
-// @run-at       document-idle
+// @run-at       document-end
 // @license      MIT
 // ==/UserScript==
 
