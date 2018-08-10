@@ -13,6 +13,14 @@
 (function() {
     'use strict';
 
+    let last_location = '';
+    let main = function(){
+    if (document.location.href === last_location) {
+        return;
+    } else {
+        last_location = document.location.href;
+    }
+
     let url_re = new RegExp('^https://twitter\.com/[^/]+$');
     if (!document.location.href.match(url_re)) {
         return;
@@ -44,4 +52,8 @@
     });
     req.open('GET', url);
     req.send();
+    };
+
+    setInterval(main, 1000);
+    main();
 })();
