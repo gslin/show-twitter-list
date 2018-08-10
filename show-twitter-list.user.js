@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Show Twitter List
 // @namespace    https://wiki.gslin.org/wiki/ShowTwitterList
-// @version      0.0.20180810.0
+// @version      0.0.20180811.0
 // @description  Show twitter list in title.
 // @author       Gea-Suan Lin <darkkiller@gmail.com>
 // @match        https://twitter.com/*
