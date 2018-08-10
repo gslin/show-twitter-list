@@ -15,43 +15,43 @@
 
     let last_location = '';
     let main = function(){
-    if (document.location.href === last_location) {
-        return;
-    } else {
-        last_location = document.location.href;
-    }
+        if (document.location.href === last_location) {
+            return;
+        } else {
+            last_location = document.location.href;
+        }
 
-    let url_re = new RegExp('^https://twitter\.com/[^/]+$');
-    if (!document.location.href.match(url_re)) {
-        return;
-    }
-
-    let el = document.querySelector('.ProfileCanopy-headerBg img');
-    if (!el) {
-        return;
-    }
-    let matched = el.getAttribute('src').match(new RegExp('https://pbs\.twimg\.com/profile_banners/([0-9]+)/'));
-    if (!matched) {
-        return;
-    }
-
-    let url = '/i/' + matched[1] + '/lists';
-    let req = new XMLHttpRequest();
-    req.addEventListener('load', function(){
-        let h = document.createElement('div');
-        h.innerHTML = JSON.parse(this.responseText).html;
-
-        let c = h.querySelector('.membership-checkbox[checked="checked"]');
-        if (!c) {
+        let url_re = new RegExp('^https://twitter\.com/[^/]+$');
+        if (!document.location.href.match(url_re)) {
             return;
         }
 
-        let l = c.parentElement.innerText.trim();
-        let title = document.getElementsByTagName('title')[0];
-        title.innerHTML = '(' + l + ') ' + title.innerHTML;
-    });
-    req.open('GET', url);
-    req.send();
+        let el = document.querySelector('.ProfileCanopy-headerBg img');
+        if (!el) {
+            return;
+        }
+        let matched = el.getAttribute('src').match(new RegExp('https://pbs\.twimg\.com/profile_banners/([0-9]+)/'));
+        if (!matched) {
+            return;
+        }
+
+        let url = '/i/' + matched[1] + '/lists';
+        let req = new XMLHttpRequest();
+        req.addEventListener('load', function(){
+            let h = document.createElement('div');
+            h.innerHTML = JSON.parse(this.responseText).html;
+
+            let c = h.querySelector('.membership-checkbox[checked="checked"]');
+            if (!c) {
+                return;
+            }
+
+            let l = c.parentElement.innerText.trim();
+            let title = document.getElementsByTagName('title')[0];
+            title.innerHTML = '(' + l + ') ' + title.innerHTML;
+        });
+        req.open('GET', url);
+        req.send();
     };
 
     setInterval(main, 1000);
