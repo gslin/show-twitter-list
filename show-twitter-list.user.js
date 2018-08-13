@@ -36,10 +36,14 @@
         }
 
         let url = '/i/' + matched[1] + '/lists';
+        console.debug('Trying to fetch ' + url);
+
         let req = new XMLHttpRequest();
         req.addEventListener('load', function(){
             let h = document.createElement('div');
             h.innerHTML = JSON.parse(this.responseText).html;
+
+            console.debug('Got ' + url, h);
 
             let c = h.querySelector('.membership-checkbox[checked="checked"]');
             if (!c) {
