@@ -14,6 +14,9 @@
     'use strict';
 
     let last_location = '';
+    let profile_banner_re = new RegExp('https://pbs\.twimg\.com/profile_banners/([0-9]+)/');
+    let url_re = new RegExp('^https://twitter\.com/[^/]+(/media)?$');
+
     let main = function(){
         if (document.location.href === last_location) {
             return;
@@ -21,7 +24,6 @@
             last_location = document.location.href;
         }
 
-        let url_re = new RegExp('^https://twitter\.com/[^/]+$');
         if (!document.location.href.match(url_re)) {
             return;
         }
@@ -30,7 +32,7 @@
         if (!el) {
             return;
         }
-        let matched = el.getAttribute('src').match(new RegExp('https://pbs\.twimg\.com/profile_banners/([0-9]+)/'));
+        let matched = el.getAttribute('src').match(profile_banner_re);
         if (!matched) {
             return;
         }
