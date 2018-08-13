@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Show Twitter List
 // @namespace    https://wiki.gslin.org/wiki/ShowTwitterList
-// @version      0.0.20180811.0
+// @version      0.0.20180813.0
 // @description  Show twitter list in title.
 // @author       Gea-Suan Lin <darkkiller@gmail.com>
 // @match        https://twitter.com/*
@@ -13,17 +13,10 @@
 (function() {
     'use strict';
 
-    let last_location = '';
     let profile_banner_re = new RegExp('https://pbs\.twimg\.com/profile_banners/([0-9]+)/');
     let url_re = new RegExp('^https://twitter\.com/[^/]+(/media)?$');
 
     let main = function(){
-        if (document.location.href === last_location) {
-            return;
-        } else {
-            last_location = document.location.href;
-        }
-
         if (!document.location.href.match(url_re)) {
             return;
         }
@@ -60,6 +53,5 @@
         req.send();
     };
 
-    setInterval(main, 1000);
     main();
 })();
