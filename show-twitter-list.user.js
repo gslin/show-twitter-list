@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Show Twitter List
 // @namespace    https://wiki.gslin.org/wiki/ShowTwitterList
-// @version      0.0.20180813.0
+// @version      0.0.20180818.0
 // @description  Show twitter list in title.
 // @author       Gea-Suan Lin <darkkiller@gmail.com>
 // @match        https://twitter.com/*
@@ -21,16 +21,8 @@
             return;
         }
 
-        let el = document.querySelector('.ProfileCanopy-headerBg img');
-        if (!el) {
-            return;
-        }
-        let matched = el.getAttribute('src').match(profile_banner_re);
-        if (!matched) {
-            return;
-        }
-
-        let url = '/i/' + matched[1] + '/lists';
+        let user_id = document.querySelector('.ProfileNav[data-user-id]').getAttribute('data-user-id');
+        let url = '/i/' + user_id + '/lists';
         console.debug('Trying to fetch ' + url);
 
         let req = new XMLHttpRequest();
