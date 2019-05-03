@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Show Twitter List
 // @namespace    https://wiki.gslin.org/wiki/ShowTwitterList
-// @version      0.0.20190504.2
+// @version      0.0.20190504.3
 // @description  Show twitter list in title.
 // @author       Gea-Suan Lin <darkkiller@gmail.com>
 // @match        https://twitter.com/*
@@ -12,6 +12,11 @@
 
 (function() {
     'use strict';
+
+    // Don't run this script inside iframe.
+    if (window !== top) {
+        return;
+    }
 
     const url_re = new RegExp('^https://twitter\.com/[^/]+(/media)?$');
 
