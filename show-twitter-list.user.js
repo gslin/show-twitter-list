@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Show Twitter List
 // @namespace    https://wiki.gslin.org/wiki/ShowTwitterList
-// @version      0.0.20190504.1
+// @version      0.0.20190504.2
 // @description  Show twitter list in title.
 // @author       Gea-Suan Lin <darkkiller@gmail.com>
 // @match        https://twitter.com/*
@@ -23,9 +23,9 @@
     let url = '/i/' + user_id + '/lists';
     console.debug('Trying to fetch ' + url);
 
-    fetch(url).then((res) => {
+    fetch(url).then(res => {
         return res.json();
-    }).then((j) => {
+    }).then(j => {
         let h = document.createElement('div');
         h.innerHTML = j.html;
 
