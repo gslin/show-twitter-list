@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         Show Twitter List
+// @name         [Deprecated] Show Twitter List
 // @namespace    https://wiki.gslin.org/wiki/ShowTwitterList
 // @version      0.20190530.0
 // @description  Show twitter list in title.

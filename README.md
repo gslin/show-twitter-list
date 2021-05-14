@@ -1,4 +1,4 @@
-# show-twitter-list
+# [Deprecated] show-twitter-list
 
 ## Install
 
